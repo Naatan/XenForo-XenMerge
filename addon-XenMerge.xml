@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="XenMerge" title="XenMerge" version_string="0.1 Beta" version_id="1" url="" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+  <admin_navigation/>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates>
+    <template title="xenmerge.css"><![CDATA[#styleChooser > .topChoosers
+{
+	display: inline-block;
+	width: 49.5%;
+	text-align: center;
+}
+
+#styleChooser > .topChoosers > .Popup
+{
+	margin: 0 auto;
+	text-align: left;
+	width: 200px;
+	float: none;
+}
+
+#compare-editor-rhs .merge-button { display: none !important; } 
+
+.submitUnit dt { display: none !important; }
+.submitUnit dd { width: 250px !important; margin-top: 10px; position: relative; left: 75%; margin-left: -120px; }
+
+/* ***** MERGELY STYLING ***** */
+
+/**
+ * Copyright (c) 2012 by Jamie Peabody, http://www.mergely.com
+ * All rights reserved.
+ * Version: 2.5 2012-07-31
+ */
+/* required */
+.mergely-column textarea { width: 80px; height: 200px; }
+.mergely-column { float: left; overflow: hidden; }
+.mergely-margin { float: left; }
+.mergely-canvas { float: left; width: 28px; }
+
+/* resizeable */
+.mergely-resizer { width: 100%; height: 100%; }
+
+/* style configuration */
+.mergely-column { border: 1px solid #ccc; }
+.mergely-active { border: 1px solid #4ba3fa; }
+
+/* markup */
+.mergely-c-start { border-top: 1px solid #ccc !important; }
+.mergely-c-end { border-bottom: 1px solid #ccc !important; }
+.mergely-a-start { border-top: 1px solid #4ba3fa !important; background-color: #ddeeff !important; }
+.mergely-a-mid { background-color: #ddeeff !important; }
+.mergely-a-end { border-bottom: 1px solid #4ba3fa !important; background-color: #ddeeff !important; }
+.mergely-d-start { border-top: 1px solid #ff7f7f !important; background-color: #f9e9e9 !important; }
+.mergely-d-mid { background-color: #f9e9e9 !important; }
+.mergely-d-end { border-bottom: 1px solid #ff7f7f !important; background-color: #f9e9e9 !important; }
+.mergely-c-rem { text-decoration: line-through; color: #888; background-color: #f9e9e9; }
+.mergely-c-add { background-color: #ddeeff; }
+.mergely-d-start-rhs { border-top: 1px solid #ff7f7f !important; }
+.mergely-d-end-rhs { border-bottom: 1px solid #ff7f7f !important; }
+.mergely-a-start-lhs { border-top: 1px solid #4ba3fa !important; }
+.mergely-a-end-lhs { border-bottom: 1px solid #4ba3fa !important; }
+
+/* ***** CODEMIRROR STYLING ***** */
+
+.CodeMirror {
+  line-height: 1em;
+  font-family: monospace;
+}
+
+.CodeMirror-scroll {
+  overflow: auto;
+  height: 300px;
+  /* This is needed to prevent an IE[67] bug where the scrolled content
+     is visible outside of the scrolling box. */
+  position: relative;
+}
+
+.CodeMirror-gutter {
+  position: absolute; left: 0; top: 0;
+  z-index: 10;
+  background-color: #f7f7f7;
+  border-right: 1px solid #eee;
+  min-width: 2em;
+  height: 100%;
+}
+.CodeMirror-gutter-text {
+  color: #aaa;
+  text-align: right;
+  padding: .4em .2em .4em .4em;
+  white-space: pre !important;
+}
+.CodeMirror-lines {
+  padding: .4em;
+}
+
+.CodeMirror pre {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  border-width: 0; margin: 0; padding: 0; background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0; margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.CodeMirror-wrap pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.CodeMirror-wrap .CodeMirror-scroll {
+  overflow-x: hidden;
+}
+
+.CodeMirror textarea {
+  outline: none !important;
+}
+
+.CodeMirror pre.CodeMirror-cursor {
+  z-index: 10;
+  position: absolute;
+  visibility: hidden;
+  border-left: 1px solid black;
+}
+.CodeMirror-focused pre.CodeMirror-cursor {
+  visibility: visible;
+}
+
+div.CodeMirror-selected { background: #d9d9d9; }
+.CodeMirror-focused div.CodeMirror-selected { background: #d7d4f0; }
+
+.CodeMirror-searching {
+  background: #ffa;
+  background: rgba(255, 255, 0, .4);
+}
+
+/* Default theme */
+
+.cm-s-default span.cm-keyword {color: #708;}
+.cm-s-default span.cm-atom {color: #219;}
+.cm-s-default span.cm-number {color: #164;}
+.cm-s-default span.cm-def {color: #00f;}
+.cm-s-default span.cm-variable {color: black;}
+.cm-s-default span.cm-variable-2 {color: #05a;}
+.cm-s-default span.cm-variable-3 {color: #085;}
+.cm-s-default span.cm-property {color: black;}
+.cm-s-default span.cm-operator {color: black;}
+.cm-s-default span.cm-comment {color: #a50;}
+.cm-s-default span.cm-string {color: #a11;}
+.cm-s-default span.cm-string-2 {color: #f50;}
+.cm-s-default span.cm-meta {color: #555;}
+.cm-s-default span.cm-error {color: #f00;}
+.cm-s-default span.cm-qualifier {color: #555;}
+.cm-s-default span.cm-builtin {color: #30a;}
+.cm-s-default span.cm-bracket {color: #cc7;}
+.cm-s-default span.cm-tag {color: #170;}
+.cm-s-default span.cm-attribute {color: #00c;}
+.cm-s-default span.cm-header {color: #a0a;}
+.cm-s-default span.cm-quote {color: #090;}
+.cm-s-default span.cm-hr {color: #999;}
+.cm-s-default span.cm-link {color: #00c;}
+
+span.cm-header, span.cm-strong {font-weight: bold;}
+span.cm-em {font-style: italic;}
+span.cm-emstrong {font-style: italic; font-weight: bold;}
+span.cm-link {text-decoration: underline;}
+
+div.CodeMirror span.CodeMirror-matchingbracket {color: #0f0;}
+div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
+]]></template>
+    <template title="xenmerge_template_edit"><![CDATA[<xen:title>{xen:phrase merging_template}: {$template.title}</xen:title>
+
+<xen:require css="xenmerge.css" />
+<xen:require js="js/xenmerge/mergely/codemirror.js" />
+<xen:require js="js/xenmerge/mergely/mode/css/css.js" />
+<xen:require js="js/xenmerge/mergely/mode/htmlmixed/htmlmixed.js" />
+<xen:require js="js/xenmerge/mergely/mode/javascript/javascript.js" />
+<xen:require js="js/xenmerge/mergely/mode/xml/xml.js" />
+<xen:require js="js/xenmerge/mergely/mergely.js" />
+<xen:require js="js/xenmerge/xenmerge.js" />
+
+<xen:navigation>
+	<xen:breadcrumb href="{xen:adminlink styles, $style}#{xen:helper listitemid, $style.style_id}">{$style.title}</xen:breadcrumb>
+	<xen:breadcrumb href="{xen:adminlink templates}#{xen:helper listitemid, $template.title}">{xen:phrase template_list}</xen:breadcrumb>
+	<xen:breadcrumb href="{xen:adminlink templates/edit, {xen:if '!{$template.template_id} AND {$masterTemplate.template_id}', {$masterTemplate}, {$template}}, 'style_id={$template.style_id}'}">{xen:phrase edit_template}: {$template.title}</xen:breadcrumb>
+</xen:navigation>
+
+<xen:form method="POST" name="XenMerge" action="{xen:adminlink 'templates/save-merge'}" id="templateEditor">
+	
+	<div id="styleChooser">
+		<div class="topChoosers">
+			<div class="Popup">
+				<xen:if is="{$masterTemplate.style_id}==0">
+					<span class="muted">{xen:phrase style}:</span> <a rel="Menu">{$masterStyle.title}</a>
+				<xen:else/>
+					<span class="muted">{xen:phrase style}:</span> <a rel="Menu">{$styles.{$masterTemplate.style_id}.title}</a> 
+				</xen:if>
+				<xen:if is="!{$masterTemplate.template_id}">
+					<span>({xen:phrase doesnt_exist})</span>
+				</xen:if>
+				<div class="Menu">
+					<div class="primaryContent menuHeader"><h3>{xen:phrase styles}</h3></div>
+					<ul class="secondaryContent blockLinksList">
+						<li><a href="{xen:adminlink 'templates/edit-merge', '', 'master_style_id=0'}&template_id={$template.template_id}"><span class="_depth0">{$masterStyle.title}</span></a></li>
+						<xen:foreach loop="$styles" value="$styleOption">
+							<xen:if is="{$styleOption.style_id}!={$template.style_id}">
+								<li><a href="{xen:adminlink 'templates/edit-merge', '', 'master_style_id={$styleOption.style_id}'}&template_id={$template.template_id}"><span class="_depth{$styleOption.depth}">{$styleOption.title}</span></a></li>
+							</xen:if>
+						</xen:foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="topChoosers">
+			<div class="Popup">
+				<span class="muted">{xen:phrase style}:</span> <a rel="Menu">{$styles.{$template.style_id}.title}</a>
+				<xen:if is="!{$template.template_id}">
+					<span>({xen:phrase doesnt_exist})</span>
+				</xen:if>
+				<div class="Menu">
+					<div class="primaryContent menuHeader"><h3>{xen:phrase styles}</h3></div>
+					<ul class="secondaryContent blockLinksList">
+						<xen:foreach loop="$styles" value="$styleOption">
+							<li><a href="{xen:adminlink 'templates/edit-merge', '', 'title={$template.title}'}&style_id={$styleOption.style_id}&master_style_id={$masterTemplate.style_id}"><span class="_depth{$styleOption.depth}">{$styleOption.title}</span></a></li>
+						</xen:foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="mergely-resizer">
+		<div id="compare">
+		</div>
+	</div>
+	
+	<textarea name="template" style="display: none">{$template.template}</textarea>
+	<textarea name="masterTemplate" style="display: none">{$masterTemplate.template}</textarea>
+	
+	<input name="title" value="{$template.title}" type="hidden"/>
+	<input name="template_id" value="{$template.template_id}" type="hidden"/>
+	<input name="style_id" value="{$template.style_id}" type="hidden"/>
+	<input name="master_style_id" value="{$masterTemplate.style_id}" type="hidden"/>
+	
+	<input name="redirect" value="{$redirect}" type="hidden"/>
+	
+	<xen:submitunit>
+		<input type="submit" name="reload" value="{xen:phrase save_and_continue}" accesskey="s" class="button primary" id="saveReloadButton" />
+		<input type="submit" name="saveexit" value="{xen:phrase save_and_exit}" accesskey="e" class="button" id="saveExitButton" />
+	</xen:submitunit>
+	
+</xen:form>
+
+<script>
+	$(document).ready( function() {
+		new XenMerge.DiffMerge;
+		new XenMerge.Form;
+	});
+</script>]]></template>
+    <template title="xenmerge_template_outdated"><![CDATA[<xen:title>{xen:phrase outdated_templates}</xen:title>
+
+<xen:topctrl>
+	<a href="{xen:adminlink styles/customized-components}" class="button">{xen:phrase customized_style_components}</a>
+</xen:topctrl>
+
+<xen:require css="filter_list.css" />
+<xen:require js="js/xenforo/filter_list.js" />
+
+<xen:form action="{xen:adminlink 'templates/outdated'}" class="section">
+
+	<h2 class="subHeading">
+		<xen:include template="filter_list_controls" />
+		{xen:phrase outdated_templates}
+	</h2>
+
+	<ul class="FilterList Scrollable">
+		<xen:foreach loop="$styles" value="$style">
+		<xen:if is="{$templatesGrouped.{$style.style_id}}">
+			<li>
+				<h3 class="textHeading">{$style.title}</h3>
+				<ol>
+				<xen:foreach loop="{$templatesGrouped.{$style.style_id}}" value="$template">
+					<xen:listitem
+						id="{$template.template_id}"
+						href="{xen:adminlink templates/edit-merge, $template, 'redirect=templates/outdated'}"
+						label="{$template.title}"
+						snippet="{xen:phrase custom_version}: {$template.version_string}, {xen:phrase master_version}: {$template.master_version_string}" />
+				</xen:foreach>
+				</ol>
+			</li>
+		</xen:if>
+		</xen:foreach>
+	</ul>
+
+	<p class="sectionFooter">{xen:phrase showing_x_of_y_items, 'count=<span class="FilterListCount">{xen:number $totalTemplates}</span>', 'total={xen:number $totalTemplates}'}</p>
+
+</xen:form>]]></template>
+  </admin_templates>
+  <code_events/>
+  <code_event_listeners>
+    <listener event_id="load_class_controller" execute_order="10" callback_class="XenMerge_Listen" callback_method="load_class_controller" active="1" description=""/>
+    <listener event_id="load_class_datawriter" execute_order="10" callback_class="XenMerge_Listen" callback_method="load_class_datawriter" active="1" description=""/>
+    <listener event_id="template_create" execute_order="10" callback_class="XenMerge_Listen" callback_method="template_create" active="1" description=""/>
+    <listener event_id="template_post_render" execute_order="10" callback_class="XenMerge_Listen" callback_method="template_post_render" active="1" description=""/>
+  </code_event_listeners>
+  <cron/>
+  <email_templates/>
+  <optiongroups/>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="cannot_compare_master_template" version_id="0" version_string=""><![CDATA[You cannot compare a master template (it can only be used as the subject of a comparison)]]></phrase>
+    <phrase title="doesnt_exist" version_id="0" version_string=""><![CDATA[Doesn't Exist]]></phrase>
+    <phrase title="manage_changes" version_id="0" version_string=""><![CDATA[Manage Changes]]></phrase>
+    <phrase title="merging_template" version_id="0" version_string=""><![CDATA[Merging Template]]></phrase>
+    <phrase title="save_and_continue" version_id="0" version_string=""><![CDATA[Save and Continue ..]]></phrase>
+  </phrases>
+  <route_prefixes/>
+  <style_properties/>
+  <templates/>
+  <bb_code_media_sites/>
+  <template_modifications/>
+</addon>

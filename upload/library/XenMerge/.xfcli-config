@@ -1,0 +1,8 @@
+{
+	"addon":	{
+		"id":	"XenMerge",
+		"name":	"XenMerge",
+		"namespace":	"XenMerge",
+		"path":	"library/XenMerge/"
+	}
+}
